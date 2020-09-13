@@ -1,0 +1,4 @@
+2020-09-13 23:22:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TASK" non trouvée
+Table "TASK" not found; SQL statement:
+select * from task [42102-197]

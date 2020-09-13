@@ -1,0 +1,102 @@
+= Beginning Front End Development with React
+:revealjs_theme: simple
+:customcss: css/styles.css
+:imagesdir: images
+
+== Objectives
+To be able to
+[%step]
+* Understand the main principles behind React
+* Create a JavaScript development environment for React
+* Develop a fully functional UI with React
+
+== Introducing React
+image::react-logo-512.png[background, size=contain]
+
+=== History
+[%step]
+* React is a _JavaScript Library for building User Interfaces_
+* Created by _Jordan Walke_, around 2011, and backed by _Facebook_
+* Announced as Open Source in 2013
+* React Native (out of scope), announced in 2015
+* The development of _React Fiber_, an enhanced Virtual DOM engine, began in 2017
+
+=== Main Ideas Behind
+[%step]
+* React is a *_JavaScript Library_* not a Framework
+* Based on *_Components_*
+* Uses a *_Declarative Style_* to describe the GUI
+* Relays on a *_Virtual DOM_* to manage the *_Hierarchy Tree_* of the *_Components_* and their status
+
+=== The Virtual DOM
+[%step]
+* The React way to dynamically update the UI since updating directly the DOM is very inefficient
+* An in-memory image of the DOM with observables to detect changes
+* Fast diffs and batch updates on sub-tree DOM parts to refresh the page's content
+* Synchronizing the Virtual DOM and the DOM is called _reconciliation_
+
+[transition=none, transition-speed=fast]
+[%notitle]
+=== Virtual DOM State Change
+* There's always two identical Virtual DOMs, one for the current state and the other for the previous state
+* A component is marked after a change
+
+image::react-virtual-dom-state-change.png[]
+
+[transition=none, transition-speed=fast]
+[%notitle]
+=== Virtual DOM Diff
+* The Virtual DOM algorithm computes the difference between the two states to optimise changes
+* If a parent is affected, its children must be updated
+
+image::react-virtual-dom-diff.png[]
+
+[transition=none, transition-speed=fast]
+[%notitle]
+=== Virtual DOM Update
+* Changes are batch committed to the effective DOM, updating just a part of the DOM tree
+* The two Virtual DOMs are identical with the DOM now
+
+image::react-virtual-dom-update.png[]
+
+=== Fundamental Concepts by the Practice
+link:https://codesandbox.io/[codesandbox.io^]
+
+image::codesandbox.png[height=35%, width=35%]
+
+== Creating a Development Environment for React
+
+[%notitle]
+=== Development Environment Components
+image::base-tools.png[]
+
+== Developing a Typical React Based Application
+
+[%notitle]
+=== How to Obtain a Global State Across Components ?
+[%step]
+* React, as a JavaScript Library, do only one thing and do it well: declaring UI components and their hierarchy, the View part of the application
+* Components pass data as props and hold internal state, but what about shared data that can be altered concurrently ?
+* How can we maintain a consistent state between not only components but also pages ?
+
+[%notitle]
+=== Introducing Redux
++++
+<p class="fragment">Long Story Short ...</p>
+<p class="fragment"><img src="./images/redux-logo.png" /></p>
+<p class="fragment">not the unique solution (there's also <em>Flux</em> and <em>MobX</em>), but the widely adopted, for the moment</p>
+<p class="fragment">can be used independently of React</p>
++++
+
+=== The Main Principles of Redux
+[%step]
+* **Single Source of Truth**
+    -> application's *_State_* is stored as a _Tree_ on a unique *_Store_*
+* **State is Read-Only**
+    -> the only way to affect the _State_ is by dispatching *_Events_*  to the _Store_
+* **Changes are Made with Pure Functions**
+    -> the _State_ is _Immutable_ and change events are intercepted by functions with no collateral effects called *_Reducers_*
+
+[%notitle]
+=== Redux Diagram
+image::redux-flow.gif[]
