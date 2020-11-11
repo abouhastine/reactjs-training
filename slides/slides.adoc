@@ -46,7 +46,7 @@ image::react-virtual-dom-state-change.png[]
 [transition=none, transition-speed=fast]
 [%notitle]
 === Virtual DOM Diff
-* The Virtual DOM algorithm computes the difference between the two states to optimise changes
+* The Virtual DOM algorithm computes the difference between the two states to optimize changes
 * If a parent is affected, its children must be updated
 
 image::react-virtual-dom-diff.png[]

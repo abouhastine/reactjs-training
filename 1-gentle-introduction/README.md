@@ -164,7 +164,7 @@ function Greeting() {
 
 ReactDOM.render(<Greeting />, document.getElementById("app"))
 ```
-As simple as that, a component can be a function that returns a part of the DOM (by means of JSX or React DOM API), and besides that, can encapsulate other components as shown below with the the simple form example
+As simple as that, a component can be a function that returns a part of the DOM (by means of JSX or React DOM API), and besides that, can encapsulate other components as shown below with the simple form example
 ``` jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
