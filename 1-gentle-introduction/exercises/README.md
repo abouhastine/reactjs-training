@@ -1,4 +1,4 @@
-## Exerice 2
+## Exercise 2
 ``` JavaScript
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -28,7 +28,7 @@ ReactDOM.render(
   document.getElementById("app")
 );
 ```
-## Exerice 3
+## Exercise 3
 ``` JavaScript
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -50,7 +50,7 @@ ReactDOM.render(
   document.getElementById("app")
 );
 ```
-## Exerice 4
+## Exercise 4
 ``` JavaScript
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -97,7 +97,7 @@ const mountPoint = document.getElementById("app");
 
 ReactDOM.render(<MyPage />, mountPoint);
 ```
-## Exerice 5
+## Exercise 5
 ``` JavaScript
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -147,7 +147,7 @@ const mountPoint = document.getElementById("app");
 
 ReactDOM.render(<MyPage title="Main title" />, mountPoint);
 ```
-## Exerice 6
+## Exercise 6
 ``` JavaScript
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -181,7 +181,7 @@ const mountPoint = document.getElementById("app");
 
 ReactDOM.render(<FormSimple subject="React"/>, mountPoint);
 ```
-## Exerice 7
+## Exercise 7
 ``` JavaScript
 import React from 'react'
 import ReactDOM from 'react-dom'
