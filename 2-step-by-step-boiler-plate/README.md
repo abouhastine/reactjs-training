@@ -54,7 +54,7 @@ npm init --yes
 this will create a file named `package.json` where the project dependencies and commands (like build and run) will be specified.  
 Inside the directory, create 3 sub-folders
 ``` Bash
-mkdir scr
+mkdir src
 mkdir dist
 mkdir config
 ```
@@ -62,13 +62,10 @@ the `src` directory will contain the code for our components, the `dist` is for 
 
 **[:arrow_double_up: back to top](#creating-a-react-development-environment-from-scratch)**
 
-### Webpack 4
+### Webpack 5
 We use [_Webpack_](https://webpack.js.org/) to build our JavaScript application, Webpack creates a single _bundle_ that contains all our front end code and can minify and obstruct it for production deliverables. We'll install all the dependencies of Webpack for our boilerplate  
 ``` Bash
-npm install --save-dev webpack webpack-cli webpack-dev-server webpack-merge \
-                    html-webpack-plugin \
-                    clean-webpack-plugin \
-                    img-loader url-loader file-loader
+npm install --save-dev webpack webpack-cli webpack-dev-server webpack-merge html-webpack-plugin clean-webpack-plugin img-loader url-loader file-loader
 ```
 Once installed, we have to configure Webpack for out project. The configuration for Webpack will be contained inside files under the `config` directory.
 ``` Bash
@@ -81,7 +78,7 @@ touch webpack.config.js
 and put the following content inside
 ``` JavaScript
 require('@babel/register');
-const webpackMerge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 
 const common = require('./config/webpack/webpack.common');
 
@@ -92,7 +89,7 @@ const envs = {
 
 const env = envs[process.env.NODE_ENV || 'development'];
 const envConfig = require(`./config/webpack/webpack.${env}`);
-module.exports = webpackMerge(common, envConfig);
+module.exports = merge(common, envConfig);
 ```
 This file is the entry point for Webpack to select the mode (either development of production) and it depends on other configuration files that we'll create inside the `config/webpack` directory as the following
 ``` Bash
@@ -119,7 +116,7 @@ module.exports = {
 ```
 the file `rules.js` is for indicating how to load the input source files to produce the bundle
 ``` JavaScript
-module.exports = [
+module.exports = [module.exports = [
     {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -135,12 +132,12 @@ module.exports = [
     {
         test: /\.(woff|woff2)$/,
         exclude: /node_modules/,
-        loader: 'url-loader?prefix=font/&limit=5000'
+        use: ['url-loader?prefix=font/&limit=5000']
     },
     {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
         exclude: /node_modules/,
-        loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
+        use: 'url-loader?limit=10000&mimetype=application/octet-stream'
     },
     {
         test: /\.(jpe?g|png|gif|svg)$/i,
@@ -197,14 +194,9 @@ module.exports = {
         rules
     },
     performance: {
-        hints: 'warning',
-        maxAssetSize: 450000,
-        maxEntrypointSize: 8500000,
-        assetFilter: assetFilename => {
-            return (
-                assetFilename.endsWith('.css') || assetFilename.endsWith('.js')
-            );
-        }
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
     },
     optimization: {
         splitChunks: {
@@ -212,7 +204,7 @@ module.exports = {
         }
     },
     devServer: {
-        contentBase: paths.outputPath,
+        static: paths.outputPath,
         compress: true,
         hot: true,
         historyApiFallback: true
@@ -252,12 +244,7 @@ module.exports = {
 The compilation of our React code is base on the _compiler [Babel](https://babeljs.io/)_ that transforms our ES6/JSX code into plan JavaScript compatible with any browser (even IE, by using the [_polyfill_](https://babeljs.io/docs/en/6.26.3/babel-polyfill) plugin).  
 To install Babel, run the following command
 ``` Bash
-npm install --save-dev @babel/core @babel/cli @babel/node @babel/plugin-proposal-class-properties \
-                    @babel/plugin-proposal-object-rest-spread @babel/plugin-syntax-dynamic-import \
-                    @babel/plugin-syntax-import-meta @babel/plugin-transform-async-to-generator \
-                    @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react \
-                    @babel/register @babel/runtime \
-                    babel-eslint babel-jest babel-loader babel-core@7.0.0-bridge.0
+npm install --save-dev @babel/core @babel/cli @babel/node @babel/plugin-proposal-class-properties @babel/plugin-proposal-object-rest-spread @babel/plugin-syntax-dynamic-import @babel/plugin-syntax-import-meta @babel/plugin-transform-async-to-generator @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/register @babel/runtime babel-eslint babel-jest babel-loader babel-core@7.0.0-bridge.0
 ```
 We have to create a file named `.babelrc` to configure our Babel configuration
 ``` Bash
@@ -289,13 +276,7 @@ and add the following content
 ### ESlint
 In addition to compiling and building, our project needs static source quality control to find potential bugs and make the code cleaner. For JavaScript, the most popular tool for _linting_ is [_ESLint_](https://eslint.org/). To setup ESLint run the following command
 ``` Bash
-npm install --save-dev eslint eslint-config-airbnb \
-                    eslint-config-prettier eslint-loader \
-                    eslint-plugin-babel \
-                    eslint-plugin-import \
-                    eslint-plugin-jsx-a11y \
-                    eslint-plugin-prettier \
-                    eslint-plugin-react
+npm install --save-dev eslint eslint-config-airbnb eslint-config-prettier eslint-loader eslint-plugin-babel eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react
 ```
 We need now to configure the linter; so create a file called `.eslintrc`
 ``` Bash
