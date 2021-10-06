@@ -116,7 +116,7 @@ module.exports = {
 ```
 the file `rules.js` is for indicating how to load the input source files to produce the bundle
 ``` JavaScript
-module.exports = [module.exports = [
+module.exports = [
     {
         test: /\.js$/,
         exclude: /node_modules/,
