@@ -7,7 +7,7 @@ We are going in this section to create a JavaScript development environment for 
   - [Prerequisites](#Prerequisites)
   - [Environment Setup](#Environment-Setup)
     - [Project Directory](#Project-Directory)
-    - [Webpack 4](#Webpack-4)
+    - [Webpack 5](#Webpack-5)
     - [Babel 7](#Babel-7)
     - [ESlint](#ESlint)
     - [Prettier](#Prettier)
