@@ -418,7 +418,7 @@ Inside the `package.json` file, we have to specify how to build and run the Reac
     "lint": "eslint --ext .js,.jsx src",
     "build:dev": "webpack --mode development",
     "build:prod": "webpack --mode production",
-    "start:dev": "webpack-dev-server --progress --colors --mode development",
+    "start:dev": "webpack-dev-server --progress --mode development",
     "start:prod": "webpack-dev-server --mode production",
     "build": "npm run build:dev",
     "start": "npm run start:dev"
