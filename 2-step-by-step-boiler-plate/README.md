@@ -286,7 +286,7 @@ and copy the following content inside
 ``` JavaScript
 {
     "parser": "babel-eslint",
-    "extends": ["airbnb", "prettier", "prettier/react"],
+    "extends": ["airbnb", "prettier"],
     "plugins": ["prettier"],
     "parserOptions": {
         "ecmaVersion": 6,
